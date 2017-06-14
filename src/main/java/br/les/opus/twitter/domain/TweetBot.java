@@ -24,10 +24,12 @@ public class TweetBot {
 
     private Date timeReplied;
 
+    private Boolean replied;
+
     @Override
     public String toString() {
         return "Bot Entry [id=" + tweetId + ", screenName=" + screenName + ", timePosted=" +
-                timePosted + ", timeReplied=" + timeReplied + "]";
+                timePosted + ", timeReplied=" + timeReplied + ", replied=" + replied + "]";
     }
 
     public Long getTweetId() {
@@ -60,5 +62,13 @@ public class TweetBot {
 
     public void setTimeReplied(Date timeReplied) {
         this.timeReplied = timeReplied;
+    }
+
+    public Boolean getReplied() {
+        return replied;
+    }
+
+    public void setReplied(Boolean bool) {
+        this.replied = bool;
     }
 }

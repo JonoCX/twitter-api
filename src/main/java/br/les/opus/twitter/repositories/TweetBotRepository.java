@@ -24,4 +24,10 @@ public class TweetBotRepository extends HibernateAbstractRepository<TweetBot, Lo
         query.setParameter("screenName", screenName);
         return query.list();
     }
+
+    public List<TweetBot> findAllNotRepliedTo() {
+        String hql = "from TweetBot where replied = false or replied = null";
+        Query query = getSession().createQuery(hql);
+        return query.list();
+    }
 }
