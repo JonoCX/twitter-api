@@ -3,6 +3,7 @@ package br.les.opus.twitter.repositories;
 import java.util.Date;
 import java.util.List;
 
+import br.les.opus.twitter.domain.TwitterUser;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
@@ -16,6 +17,15 @@ import br.les.opus.twitter.domain.Tweet;
 
 @Repository
 public class TweetRepository extends HibernateAbstractRepository<Tweet, Long>{
+
+    @SuppressWarnings("unchecked")
+    public List<Tweet> findAllByUser(TwitterUser user) {
+        String hql = "from Tweet where user = :user";
+        Query query = getSession()
+                .createQuery(hql)
+                .setParameter("user" , user);
+        return query.list();
+    }
 
 	@SuppressWarnings("unchecked")
 	public List<Tweet> findAllGeotagged() {
