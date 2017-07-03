@@ -54,7 +54,7 @@ public class TwitterUserRepository extends HibernateAbstractRepository<TwitterUs
 
 	@SuppressWarnings("unchecked")
 	public List<TwitterUser> findByScreenNameLike(String likeClause) {
-	    String hql = "from TwitterUser where screeName like :likeClause";
+	    String hql = "from TwitterUser where screenName like :likeClause";
 	    Query query = getSession().createQuery(hql);
 	    query.setParameter("likeClause", likeClause);
 	    return query.list();
