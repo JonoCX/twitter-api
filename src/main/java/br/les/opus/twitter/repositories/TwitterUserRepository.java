@@ -51,5 +51,13 @@ public class TwitterUserRepository extends HibernateAbstractRepository<TwitterUs
 		query.setParameter("screenName", screenname);
 		return (TwitterUser)query.list().get(0);
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<TwitterUser> findByScreenNameLike(String likeClause) {
+	    String hql = "from TwitterUser where screeName like :likeClause";
+	    Query query = getSession().createQuery(hql);
+	    query.setParameter("likeClause", likeClause);
+	    return query.list();
+    }
 	
 }
